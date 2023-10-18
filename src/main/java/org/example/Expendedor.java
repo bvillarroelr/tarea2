@@ -3,6 +3,8 @@ package org.example;
 public class Expendedor {
     public static final int COCA = 1;
     public static final int SPRITE = 2;
+    public static final int CHOCMAN = 3;
+    public static final int FRUGELE = 4;
     private Deposito coca, sprite, monVu;
     private int precio;
     private int numcoca;
@@ -23,6 +25,7 @@ public class Expendedor {
         }
     }
     public Bebida comprarProducto(Moneda m, int cual){
+        // Por hacer: comprar dulces (frugele o chocman)
         if(m==null){ throw new PagoIncorrectoException("No se ha encontrado una moneda");
         }
         else if(m.getValor()<precio){
@@ -67,7 +70,8 @@ public class Expendedor {
     }
 }
 
-// Quedo a preguntar al profesor si mantener excepciones en los archivos donde ocurren
+// Quedo a preguntar al profesor si mantener excepciones en los archivos donde ocurren...
+//
 class PagoIncorrectoException extends RuntimeException {
     public PagoIncorrectoException(String message) {
         super(message);

@@ -3,18 +3,31 @@ package org.example;
 import java.util.ArrayList;
 
 public class Deposito {
-    private ArrayList<Bebida> lista;
+    private ArrayList<Bebida> listaBebidas;
+    private ArrayList<Dulce> listaDulces;
     private ArrayList<Moneda> monedillas;
     public Deposito() {
-        lista = new ArrayList();
+        listaBebidas = new ArrayList();
         monedillas = new ArrayList();
     }
-    public void addBebida(Bebida b) {
-        lista.add(b);
+    public Dulce getDulce() {
+        if(listaDulces.size() > 0){
+            return listaDulces.remove(0);
+        }
+        else{
+            return null;
+        }
     }
+    public void addDulce(Dulce caramelo) {
+        listaDulces.add(caramelo);
+    }
+    public void addBebida(Bebida b) {
+        listaBebidas.add(b);
+    }
+
     public Bebida getBebida() {
-        if(lista.size() > 0){
-            return lista.remove(0);
+        if(listaBebidas.size() > 0){
+            return listaBebidas.remove(0);
         }
         else{
             return null;
