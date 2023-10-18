@@ -3,9 +3,9 @@ package org.example;
 public class Comprador {
     private String sonido;
     private int vuelto;
-    public Comprador(Moneda m, int cualBebida, Expendedor exp){
-        Bebida b = exp.comprarBebida(m,cualBebida);
-        if(cualBebida == 1 || cualBebida == 2){
+    public Comprador(Moneda m, int cualProducto, Expendedor exp){
+        Bebida b = exp.comprarProducto(m,cualProducto);
+        if(cualProducto == 1 || cualProducto == 2){
             int temp = 0;
             while(exp.getVuelto() != null){
                 temp += 100;
@@ -23,7 +23,7 @@ public class Comprador {
                 vuelto = temp;
             }
         }
-        else if(cualBebida != 1 && cualBebida != 2){
+        else if(cualProducto != 1 && cualProducto != 2){
             sonido = null;
             vuelto = m.getValor();
         }
