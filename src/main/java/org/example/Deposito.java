@@ -2,45 +2,15 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Deposito {
-    private ArrayList<Bebida> listaBebidas;
-    private ArrayList<Dulce> listaDulces;
-    private ArrayList<Moneda> monedillas;
+public class Deposito<T> {
+    private ArrayList<T> listaElementos;
     public Deposito() {
-        listaBebidas = new ArrayList<Bebida>();
-        listaDulces = new ArrayList<Dulce>();
-        monedillas = new ArrayList<Moneda>();
+        listaElementos = new ArrayList<T>();
     }
-    public Dulce getDulce() {
-        if(listaDulces.size() > 0){
-            return listaDulces.remove(0);
-        }
-        else{
-            return null;
-        }
+    public void addElemento(T objeto) {
+        listaElementos.add(objeto);
     }
-    public void addDulce(Dulce caramelo) {
-        listaDulces.add(caramelo);
-    }
-    public void addBebida(Bebida b) {
-        listaBebidas.add(b);
-    }
-
-    public Bebida getBebida() {
-        if(listaBebidas.size() > 0){
-            return listaBebidas.remove(0);
-        }
-        else{
-            return null;
-        }
-    }
-    public void addMoneda(Moneda m){
-        monedillas.add(m);
-    }
-    public Moneda getMoneda(){
-        if(monedillas.size() != 0){
-            return monedillas.remove(0);
-        }
-        return null;
+    public T getElemento() {
+        return listaElementos.remove(0);
     }
 }

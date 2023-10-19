@@ -6,7 +6,9 @@ public class Expendedor {
     public static final int SPRITE = 3;
     public static final int CHOCMAN = 4;
     public static final int FRUGELE = 5;
-    private Deposito coca, sprite, fanta, chocman, frugele, monVu;
+    private Deposito<Bebida> coca, sprite, fanta;
+    private Deposito<Dulce> chocman, frugele;
+    private Deposito<Moneda> monVu;
     private int precio;
     private int numcoca;
     private int numfanta;
@@ -14,7 +16,7 @@ public class Expendedor {
     private int numchocman;
     private int numfrugele;
 
-    public Expendedor(int numProductos, int precioBebidas){
+    public Expendedor(int numProductos, int precioBebidas){ // precioBebidas lo cambiaremos, pues para eso tenemos enum
         this.precio = precioBebidas;
         numcoca = numProductos;
         numsprite = numProductos;
@@ -27,8 +29,8 @@ public class Expendedor {
         for(int i=0; i<numProductos; i++){
             Bebida b = new CocaCola(i);
             Bebida c = new Sprite(i);
-            coca.addBebida(b);
-            sprite.addBebida(c);
+            coca.addElemento(b);
+            sprite.addElemento(c);
         }
     }
     public Producto comprarProducto(Moneda m, int cual){
@@ -40,52 +42,52 @@ public class Expendedor {
             numcoca-=1;
             for(int i=0;i<m.getValor()-precio;i+=100){
                 Moneda a = new Moneda100();
-                monVu.addMoneda(a);
+                monVu.addElemento(a);
             }
-            return coca.getBebida();
+            return coca.getElemento();
         }
         else if(cual==SPRITE && numsprite>0){
             numsprite-=1;
             for(int i=0;i<m.getValor()-precio;i+=100){
                 Moneda a = new Moneda100();
-                monVu.addMoneda(a);
+                monVu.addElemento(a);
             }
-            return sprite.getBebida();
+            return sprite.getElemento();
         }
         else if(cual==FANTA && numsprite>0){
             numfanta-=1;
             for(int i=0;i<m.getValor()-precio;i+=100){
                 Moneda a = new Moneda100();
-                monVu.addMoneda(a);
+                monVu.addElemento(a);
             }
-            return fanta.getBebida();
+            return fanta.getElemento();
         }
         else if(cual== CHOCMAN && numsprite>0){
             numchocman-=1;
             for(int i=0;i<m.getValor()-precio;i+=100){
                 Moneda a = new Moneda100();
-                monVu.addMoneda(a);
+                monVu.addElemento(a);
             }
-            return chocman.getDulce();
+            return chocman.getElemento();
         }
         else if(cual==FRUGELE && numsprite>0){
             numfrugele-=1;
             for(int i=0;i<m.getValor()-precio;i+=100){
                 Moneda a = new Moneda100();
-                monVu.addMoneda(a);
+                monVu.addElemento(a);
             }
-            return sprite.getDulce();
+            return sprite.getElemento();
         }
         else {
             for(int i=0;i<m.getValor();i+=100){
                 Moneda a = new Moneda100();
-                monVu.addMoneda(a);
+                monVu.addElemento(a);
             }
             return null;
         }
     }
     public Moneda getVuelto(){
-        return monVu.getMoneda();
+        return monVu.getElemento();
     }
     public int getNumsprite(){
         return numsprite;
