@@ -1,11 +1,12 @@
 package org.example;
 
-public class Chocman extends Dulce {
-    public Chocman(int serie) {
+public class Super8 extends Dulce {
+    public Super8(int serie) {
         super(serie);
     }
-    public String comer(){
+    public String consumir(){
         String sabor = new String("chocolate");
         return sabor;
     }
 }
+

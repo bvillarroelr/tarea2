@@ -5,7 +5,7 @@ public class Sprite extends Bebida {
         super(serie);
     }
     @Override
-    public String beber(){
+    public String consumir(){
         String sabor = new String("sprite");
         return sabor;
     }

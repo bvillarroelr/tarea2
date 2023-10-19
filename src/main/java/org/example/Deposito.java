@@ -13,4 +13,7 @@ public class Deposito<T> {
     public T getElemento() {
         return listaElementos.remove(0);
     }
+    public int getSize() {
+        return listaElementos.size();
+    }
 }

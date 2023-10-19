@@ -5,7 +5,6 @@ abstract class Bebida extends Producto{
     }
 
     public int getSerie() {
-        return super.serie; // Revisar/corregir, super.serie es private (propiedad de la clase Producto)
+        return super.serie;
     }
-    public abstract String beber();
 }

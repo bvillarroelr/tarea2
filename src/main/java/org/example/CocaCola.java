@@ -5,7 +5,7 @@ public class CocaCola extends Bebida{
         super(serie);
     }
     @Override
-    public String beber(){
+    public String consumir(){
         String sabor = new String("cocacola");
         return sabor;
     }

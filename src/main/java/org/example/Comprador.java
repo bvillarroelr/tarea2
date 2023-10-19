@@ -1,31 +1,22 @@
 package org.example;
 
 public class Comprador {
-    private String sonido;
+    private String consumiste;
     private int vuelto;
     // Arreglar
     public Comprador(Moneda m, int cualProducto, Expendedor exp){
-        Producto b = exp.comprarProducto(m,cualProducto);
-        if(cualProducto == 1 || cualProducto == 2){
-            int temp = 0;
-            while(exp.getVuelto() != null){
-                temp += 100;
-            }
-            if(b != null){
-                sonido = b.beber(); // cambiar
-                vuelto = temp;
-            }
-            else if(b == null && m != null){
-                sonido = null;
-                vuelto = temp;
-            }
-            else if(b != null && m != null){
-                sonido = null;
+        Producto p = exp.comprarProducto(m,cualProducto);
+        int temp = 0;
+        if(cualProducto == 1 || cualProducto == 2 || cualProducto == 3 || cualProducto == 4 || cualProducto == 5){
+            // Al final los casos se resumen a verificar si hay productos en el depósito, y si la moneda no es nula, pero de igual forma hay que testearlo
+            while(exp.getVuelto() != null) temp += 100;
+            if(p != null && m != null) {
+                consumiste = p.consumir();
                 vuelto = temp;
             }
         }
-        else if(cualProducto != 1 && cualProducto != 2){
-            sonido = null;
+        else {
+            consumiste = null;
             vuelto = m.getValor();
         }
     }
@@ -33,6 +24,6 @@ public class Comprador {
         return vuelto;
     }
     public String queBebiste(){
-        return sonido;
+        return consumiste;
     }
 }

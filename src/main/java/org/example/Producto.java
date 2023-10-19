@@ -5,4 +5,13 @@ public abstract class Producto {
     public Producto(int serie) {
         this.serie = serie;
     }
+    public abstract String consumir();
+    public boolean esNulo(Producto p) {
+        if (p == null) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
