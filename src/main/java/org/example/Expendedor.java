@@ -2,37 +2,40 @@ package org.example;
 
 public class Expendedor {
     public static final int COCA = 1;
-    public static final int SPRITE = 2;
-    public static final int CHOCMAN = 3;
-    public static final int FRUGELE = 4;
-    private Deposito coca, sprite, monVu;
+    public static final int FANTA = 2;
+    public static final int SPRITE = 3;
+    public static final int CHOCMAN = 4;
+    public static final int FRUGELE = 5;
+    private Deposito coca, sprite, fanta, chocman, frugele, monVu;
     private int precio;
     private int numcoca;
+    private int numfanta;
     private int numsprite;
+    private int numchocman;
+    private int numfrugele;
 
-    public Expendedor(int numBebidas, int precioBebidas){
+    public Expendedor(int numProductos, int precioBebidas){
         this.precio = precioBebidas;
-        numcoca = numBebidas;
-        numsprite = numBebidas;
+        numcoca = numProductos;
+        numsprite = numProductos;
         coca = new Deposito();
         sprite = new Deposito();
+        fanta = new Deposito();
+        chocman = new Deposito();
+        frugele = new Deposito();
         monVu = new Deposito();
-        for(int i=0; i<numBebidas; i++){
+        for(int i=0; i<numProductos; i++){
             Bebida b = new CocaCola(i);
             Bebida c = new Sprite(i);
             coca.addBebida(b);
             sprite.addBebida(c);
         }
     }
-    public Bebida comprarProducto(Moneda m, int cual){
+    public Producto comprarProducto(Moneda m, int cual){
         // Por hacer: comprar dulces (frugele o chocman)
         if(m==null){ throw new PagoIncorrectoException("No se ha encontrado una moneda");
         }
         else if(m.getValor()<precio){
-            for(int i=0;i<m.getValor();i+=100){
-                Moneda a = new Moneda100();
-                monVu.addMoneda(a);
-            }
             return null;
         }
         else if(cual==COCA && numcoca>0){
@@ -51,6 +54,30 @@ public class Expendedor {
             }
             return sprite.getBebida();
         }
+        else if(cual==FANTA && numsprite>0){
+            numfanta-=1;
+            for(int i=0;i<m.getValor()-precio;i+=100){
+                Moneda a = new Moneda100();
+                monVu.addMoneda(a);
+            }
+            return fanta.getBebida();
+        }
+        else if(cual== CHOCMAN && numsprite>0){
+            numchocman-=1;
+            for(int i=0;i<m.getValor()-precio;i+=100){
+                Moneda a = new Moneda100();
+                monVu.addMoneda(a);
+            }
+            return chocman.getDulce();
+        }
+        else if(cual==FRUGELE && numsprite>0){
+            numfrugele-=1;
+            for(int i=0;i<m.getValor()-precio;i+=100){
+                Moneda a = new Moneda100();
+                monVu.addMoneda(a);
+            }
+            return sprite.getDulce();
+        }
         else {
             for(int i=0;i<m.getValor();i+=100){
                 Moneda a = new Moneda100();
@@ -67,6 +94,17 @@ public class Expendedor {
     }
     public int getNumcoca() {
         return numcoca;
+    }
+    public int getNumfanta() {
+        return numfanta;
+    }
+
+    public int getNumchocman() {
+        return numchocman;
+    }
+
+    public int getNumfrugele() {
+        return numfrugele;
     }
 }
 

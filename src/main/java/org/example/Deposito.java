@@ -7,8 +7,9 @@ public class Deposito {
     private ArrayList<Dulce> listaDulces;
     private ArrayList<Moneda> monedillas;
     public Deposito() {
-        listaBebidas = new ArrayList();
-        monedillas = new ArrayList();
+        listaBebidas = new ArrayList<Bebida>();
+        listaDulces = new ArrayList<Dulce>();
+        monedillas = new ArrayList<Moneda>();
     }
     public Dulce getDulce() {
         if(listaDulces.size() > 0){

@@ -3,8 +3,9 @@ package org.example;
 public class Comprador {
     private String sonido;
     private int vuelto;
+    //Arreglar
     public Comprador(Moneda m, int cualProducto, Expendedor exp){
-        Bebida b = exp.comprarProducto(m,cualProducto);
+        Producto b = exp.comprarProducto(m,cualProducto);
         if(cualProducto == 1 || cualProducto == 2){
             int temp = 0;
             while(exp.getVuelto() != null){
