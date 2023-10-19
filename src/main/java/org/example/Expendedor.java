@@ -33,11 +33,9 @@ public class Expendedor {
     }
     public Producto comprarProducto(Moneda m, int cual){
         // Por hacer: comprar dulces (frugele o chocman)
-        if(m==null){ throw new PagoIncorrectoException("No se ha encontrado una moneda");
-        }
-        else if(m.getValor()<precio){
-            return null;
-        }
+        if(m==null){ throw new PagoIncorrectoException("No se ha encontrado una moneda");}
+        else if(m.getValor()<precio) { throw new PagoInsuficienteException("No dispone de suficiente saldo");}
+
         else if(cual==COCA && numcoca>0){
             numcoca-=1;
             for(int i=0;i<m.getValor()-precio;i+=100){
@@ -105,13 +103,5 @@ public class Expendedor {
 
     public int getNumfrugele() {
         return numfrugele;
-    }
-}
-
-// Quedo a preguntar al profesor si mantener excepciones en los archivos donde ocurren...
-//
-class PagoIncorrectoException extends RuntimeException {
-    public PagoIncorrectoException(String message) {
-        super(message);
     }
 }
