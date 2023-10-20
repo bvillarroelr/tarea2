@@ -10,14 +10,14 @@ public class Expendedor {
     private Deposito<Dulce> depSuper8, depSnickers;
     private Deposito<Moneda> monVu;
 
-    public Expendedor(int numProductos){ // precioBebidas lo cambiaremos, pues para eso tenemos enum
+    public Expendedor(int numProductos) { // precioBebidas lo cambiaremos, pues para eso tenemos enum
         depCoca = new Deposito();
         depSprite = new Deposito();
         depFanta = new Deposito();
         depSuper8 = new Deposito();
         depSnickers = new Deposito();
         monVu = new Deposito();
-        for(int i=0; i<numProductos; i++){
+        for (int i = 0; i < numProductos; i++) {
             Bebida c = new CocaCola(i);
             Bebida s = new Sprite(i);
             Bebida f = new Fanta(i);
@@ -31,61 +31,62 @@ public class Expendedor {
             depSuper8.addElemento(s8);
         }
     }
-    public Producto comprarProducto(Moneda m, int cual){
+
+    public Producto comprarProducto(Moneda m, int cual) {
         // Por hacer: comprar dulces (frugele o chocman)
-        if(m==null){ throw new PagoIncorrectoException("No se ha encontrado una moneda");}
-        else if(cual==COCA && depCoca.getSize() > 0){
-            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
+        if (m == null) {
+            throw new PagoIncorrectoException("No se ha encontrado una moneda");
+        } else if (cual == COCA && depCoca.getSize() > 0) {
+            for (int i = 0; i < m.getValor() - Precios.BEBIDAS.getPrecio(); i += 100) {
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depCoca.getElemento();
-        }
-        else if(cual==SPRITE && depSprite.getSize()>0){
-            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
+        } else if (cual == SPRITE && depSprite.getSize() > 0) {
+            for (int i = 0; i < m.getValor() - Precios.BEBIDAS.getPrecio(); i += 100) {
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depSprite.getElemento();
-        }
-        else if(cual==FANTA && depFanta.getSize() > 0){
-            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
+        } else if (cual == FANTA && depFanta.getSize() > 0) {
+            for (int i = 0; i < m.getValor() - Precios.BEBIDAS.getPrecio(); i += 100) {
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depFanta.getElemento();
-        }
-        else if(cual== SNICKERS && depSnickers.getSize() > 0){
-            for(int i=0;i<m.getValor()-Precios.DULCES.getPrecio();i+=100){
+        } else if (cual == SNICKERS && depSnickers.getSize() > 0) {
+            for (int i = 0; i < m.getValor() - Precios.DULCES.getPrecio(); i += 100) {
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depSnickers.getElemento();
-        }
-        else if(cual== SUPER8 && depSuper8.getSize()>0){
-            for(int i=0;i<m.getValor()-Precios.DULCES.getPrecio();i+=100){
+        } else if (cual == SUPER8 && depSuper8.getSize() > 0) {
+            for (int i = 0; i < m.getValor() - Precios.DULCES.getPrecio(); i += 100) {
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depSuper8.getElemento();
-        }
-        else {
-            for(int i=0;i<m.getValor();i+=100){
+        } else {
+            for (int i = 0; i < m.getValor(); i += 100) {
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return null;
         }
     }
-    public Moneda getVuelto(){
-        return monVu.getElemento();
+
+    public int Vuelto() {
+        return monVu.getSize();
     }
-    public int getNumSprite(){
+
+    public int getNumSprite() {
         return depSprite.getSize();
     }
+
     public int getNumCoca() {
         return depCoca.getSize();
     }
+
     public int getNumFanta() {
         return depFanta.getSize();
     }
