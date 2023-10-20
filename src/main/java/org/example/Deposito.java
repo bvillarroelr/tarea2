@@ -14,7 +14,8 @@ public class Deposito<T> {
         if (!listaElementos.isEmpty()) {
             return listaElementos.remove(0);
         } else {
-            throw new NoHayProductoException("No queda producto");}
+            return null;
+        }
     }
     public int getSize() {
         return listaElementos.size();

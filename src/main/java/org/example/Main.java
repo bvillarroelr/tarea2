@@ -22,10 +22,10 @@ public class Main {
         Comprador clienteC = new Comprador(quinientos, 3, vendomatica);
         Comprador clienteD = new Comprador(cien, 4, vendomatica);
 
-        System.out.println("Vuelto: "+clienteA.cuantoVuelto());
-        System.out.println("Vuelto: "+clienteB.cuantoVuelto());
-        System.out.println("Vuelto: "+clienteC.cuantoVuelto());
-        System.out.println("Vuelto: "+clienteD.cuantoVuelto());
+        System.out.println("Consumiste: "+clienteA.queConsumiste()+". Vuelto: "+clienteA.cuantoVuelto());
+        System.out.println("Consumiste: "+clienteB.queConsumiste()+". Vuelto: "+clienteB.cuantoVuelto());
+        System.out.println("Consumiste: "+clienteC.queConsumiste()+". Vuelto: "+clienteC.cuantoVuelto());   // Falta implementar exception (en este caso pago insuficiente)
+        System.out.println("Consumiste: "+clienteD.queConsumiste()+". Vuelto: "+clienteD.cuantoVuelto());
 
         // Prueba de Excepcion
         try {

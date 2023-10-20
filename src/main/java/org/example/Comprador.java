@@ -10,20 +10,14 @@ public class Comprador {
         if(cualProducto == 1 || cualProducto == 2 || cualProducto == 3 || cualProducto == 4 || cualProducto == 5){
             // Al final los casos se resumen a verificar si hay productos en el depósito, y si la moneda no es nula, pero de igual forma hay que testearlo
             while(exp.getVuelto() != null) temp += 100;
-            if(p != null && m != null) {
-                consumiste = p.consumir();
-                vuelto = temp;
-            }
-        }
-        else {
-            consumiste = null;
-            vuelto = m.getValor();
+            consumiste = p.consumir();
+            vuelto = temp;
         }
     }
     public int cuantoVuelto(){
         return vuelto;
     }
-    public String queBebiste(){
+    public String queConsumiste(){
         return consumiste;
     }
 }
