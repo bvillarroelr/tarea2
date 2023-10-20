@@ -5,7 +5,7 @@ public class Snickers extends Dulce {
         super(serie);
     }
     public String consumir() {
-        String sabor = new String("frutos rojos");  // Se me ocurrió que podriamos hacer que devuelva un sabor random cada vez c:
+        String sabor = new String("snicker");
         return sabor;
     }
 }

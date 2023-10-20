@@ -11,7 +11,10 @@ public class Deposito<T> {
         listaElementos.add(objeto);
     }
     public T getElemento() {
-        return listaElementos.remove(0);
+        if (!listaElementos.isEmpty()) {
+            return listaElementos.remove(0);
+        } else {
+            throw new NoHayProductoException("No queda producto");}
     }
     public int getSize() {
         return listaElementos.size();

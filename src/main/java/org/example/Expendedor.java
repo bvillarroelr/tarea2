@@ -9,10 +9,8 @@ public class Expendedor {
     private Deposito<Bebida> depCoca, depSprite, depFanta;
     private Deposito<Dulce> depSuper8, depSnickers;
     private Deposito<Moneda> monVu;
-    private int precio;
 
-    public Expendedor(int numProductos, int precioBebidas){ // precioBebidas lo cambiaremos, pues para eso tenemos enum
-        this.precio = precioBebidas;
+    public Expendedor(int numProductos){ // precioBebidas lo cambiaremos, pues para eso tenemos enum
         depCoca = new Deposito();
         depSprite = new Deposito();
         depFanta = new Deposito();
@@ -27,7 +25,7 @@ public class Expendedor {
             Dulce s8 = new Super8(i);
 
             depCoca.addElemento(c);
-            depSprite.addElemento(c);
+            depSprite.addElemento(s);
             depFanta.addElemento(f);
             depSnickers.addElemento(sn);
             depSuper8.addElemento(s8);
@@ -36,38 +34,36 @@ public class Expendedor {
     public Producto comprarProducto(Moneda m, int cual){
         // Por hacer: comprar dulces (frugele o chocman)
         if(m==null){ throw new PagoIncorrectoException("No se ha encontrado una moneda");}
-        else if(m.getValor()<precio) { throw new PagoInsuficienteException("No dispone de suficiente saldo");}
-
         else if(cual==COCA && depCoca.getSize() > 0){
-            for(int i=0;i<m.getValor()-precio;i+=100){
+            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depCoca.getElemento();
         }
         else if(cual==SPRITE && depSprite.getSize()>0){
-            for(int i=0;i<m.getValor()-precio;i+=100){
+            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depSprite.getElemento();
         }
         else if(cual==FANTA && depFanta.getSize() > 0){
-            for(int i=0;i<m.getValor()-precio;i+=100){
+            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depFanta.getElemento();
         }
         else if(cual== SNICKERS && depSnickers.getSize() > 0){
-            for(int i=0;i<m.getValor()-precio;i+=100){
+            for(int i=0;i<m.getValor()-Precios.DULCES.getPrecio();i+=100){
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
             return depSnickers.getElemento();
         }
         else if(cual== SUPER8 && depSuper8.getSize()>0){
-            for(int i=0;i<m.getValor()-precio;i+=100){
+            for(int i=0;i<m.getValor()-Precios.DULCES.getPrecio();i+=100){
                 Moneda a = new Moneda100();
                 monVu.addElemento(a);
             }
