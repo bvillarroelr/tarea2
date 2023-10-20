@@ -31,53 +31,52 @@ public class Expendedor {
             depSuper8.addElemento(s8);
         }
     }
-    public Producto comprarProducto(Moneda m, int cual){
+    public Producto comprarProducto(Moneda m, int cual) {
         // Por hacer: comprar dulces (frugele o chocman)
-        if(m==null){ throw new PagoIncorrectoException("No se ha encontrado una moneda");}
-        else if(cual==COCA && depCoca.getSize() > 0){
-            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
-                Moneda a = new Moneda100();
-                monVu.addElemento(a);
-            }
+        if (m == null)  throw new PagoIncorrectoException("No se ha encontrado una moneda");
+
+        if(cual==COCA && depCoca.getSize() > 0 ){
+            if(m.getValor() < Precios.BEBIDAS.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+            calcularVueltoBebida(m);
             return depCoca.getElemento();
         }
-        else if(cual==SPRITE && depSprite.getSize()>0){
-            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
-                Moneda a = new Moneda100();
-                monVu.addElemento(a);
-            }
-            return depSprite.getElemento();
+         if(cual==SPRITE && depSprite.getSize()>0 ){
+             if(m.getValor() < Precios.BEBIDAS.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+             calcularVueltoBebida(m);
+             return depSprite.getElemento();
         }
-        else if(cual==FANTA && depFanta.getSize() > 0){
-            for(int i=0;i<m.getValor()-Precios.BEBIDAS.getPrecio();i+=100){
-                Moneda a = new Moneda100();
-                monVu.addElemento(a);
-            }
+         if(cual==FANTA && depFanta.getSize() > 0 ){
+             if(m.getValor() < Precios.BEBIDAS.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+             calcularVueltoBebida(m);
             return depFanta.getElemento();
         }
-        else if(cual== SNICKERS && depSnickers.getSize() > 0){
-            for(int i=0;i<m.getValor()-Precios.DULCES.getPrecio();i+=100){
-                Moneda a = new Moneda100();
-                monVu.addElemento(a);
-            }
-            return depSnickers.getElemento();
+         if(cual== SNICKERS && depSnickers.getSize() > 0  ){
+             if(m.getValor() <  Precios.DULCES.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+             calcularVueltoDulce(m);
+             return depSnickers.getElemento();
         }
-        else if(cual== SUPER8 && depSuper8.getSize()>0){
-            for(int i=0;i<m.getValor()-Precios.DULCES.getPrecio();i+=100){
-                Moneda a = new Moneda100();
-                monVu.addElemento(a);
-            }
-            return depSuper8.getElemento();
+         if(cual== SUPER8 && depSuper8.getSize()> 0 ){
+             if(m.getValor() <  Precios.DULCES.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+             calcularVueltoDulce(m);
+             return depSuper8.getElemento();
         }
-        else {
-            for(int i=0;i<m.getValor();i+=100){
-                Moneda a = new Moneda100();
-                monVu.addElemento(a);
-            }
-            return null;
-        }
+         throw new NoHayProductoException("No hay Productos Disponible");
+
+
     }
     public Moneda getVuelto(){
         return monVu.getElemento();
+    }
+    private void calcularVueltoBebida(Moneda m) {
+        for (int i = 0; i < m.getValor() - Precios.BEBIDAS.getPrecio(); i += 100) {
+            Moneda a = new Moneda100();
+            monVu.addElemento(a);
+        }
+    }
+    private void calcularVueltoDulce(Moneda m){
+                for(int i=0;i<m.getValor() - Precios.DULCES.getPrecio();i+=100){
+                    Moneda a = new Moneda100();
+                    monVu.addElemento(a);
+        }
     }
 }
