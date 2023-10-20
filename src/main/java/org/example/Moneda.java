@@ -5,9 +5,6 @@ abstract class Moneda implements Comparable<Moneda>{
     public Moneda(){
         ;
     }
-    public Moneda getSerie() {
-        return this;
-    }
     public abstract int getValor();
     public int compareTo(Moneda m){
         if (this.getValor() > m.getValor()) {

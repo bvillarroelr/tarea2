@@ -80,21 +80,4 @@ public class Expendedor {
     public Moneda getVuelto(){
         return monVu.getElemento();
     }
-    public int getNumSprite(){
-        return depSprite.getSize();
-    }
-    public int getNumCoca() {
-        return depCoca.getSize();
-    }
-    public int getNumFanta() {
-        return depFanta.getSize();
-    }
-
-    public int getNumSnickers() {
-        return depSnickers.getSize();
-    }
-
-    public int getNumSuper8() {
-        return depSuper8.getSize();
-    }
 }

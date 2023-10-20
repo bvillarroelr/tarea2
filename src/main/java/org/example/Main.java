@@ -26,7 +26,6 @@ public class Main {
         System.out.println("Consumiste: "+clienteB.queConsumiste()+". Vuelto: "+clienteB.cuantoVuelto());
         System.out.println("Consumiste: "+clienteC.queConsumiste()+". Vuelto: "+clienteC.cuantoVuelto());   // Falta implementar exception (en este caso pago insuficiente)
         System.out.println("Consumiste: "+clienteD.queConsumiste()+". Vuelto: "+clienteD.cuantoVuelto());
-
         // Prueba de Excepcion
         try {
             Comprador clienteE = new Comprador(null, 1, vendomatica);
