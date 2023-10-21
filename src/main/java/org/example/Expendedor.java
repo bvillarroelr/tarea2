@@ -1,11 +1,6 @@
 package org.example;
 
 public class Expendedor {
-    public static final int COCA = 1;
-    public static final int FANTA = 2;
-    public static final int SPRITE = 3;
-    public static final int SNICKERS = 4;
-    public static final int SUPER8 = 5;
     private Deposito<Bebida> depCoca, depSprite, depFanta;
     private Deposito<Dulce> depSuper8, depSnickers;
     private Deposito<Moneda> monVu;
@@ -31,32 +26,32 @@ public class Expendedor {
             depSuper8.addElemento(s8);
         }
     }
-    public Producto comprarProducto(Moneda m, int cual) {
+    public Producto comprarProducto(Moneda m,Detalles cual) {
         // Por hacer: comprar dulces (frugele o chocman)
         if (m == null)  throw new PagoIncorrectoException("No se ha encontrado una moneda");
 
-        if(cual==COCA && depCoca.getSize() > 0 ){
-            if(m.getValor() < Precios.BEBIDAS.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+        if(cual==Detalles.COCA && depCoca.getSize() > 0 ){
+                if(m.getValor() < Detalles.BEBIDAS.getDetalle()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
             calcularVueltoBebida(m);
             return depCoca.getElemento();
         }
-         if(cual==SPRITE && depSprite.getSize()>0 ){
-             if(m.getValor() < Precios.BEBIDAS.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+         if(cual==Detalles.SPRITE && depSprite.getSize()>0 ){
+             if(m.getValor() < Detalles.BEBIDAS.getDetalle()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
              calcularVueltoBebida(m);
              return depSprite.getElemento();
         }
-         if(cual==FANTA && depFanta.getSize() > 0 ){
-             if(m.getValor() < Precios.BEBIDAS.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+         if(cual==Detalles.FANTA && depFanta.getSize() > 0 ){
+                 if(m.getValor() < Detalles.BEBIDAS.getDetalle()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
              calcularVueltoBebida(m);
             return depFanta.getElemento();
         }
-         if(cual== SNICKERS && depSnickers.getSize() > 0  ){
-             if(m.getValor() <  Precios.DULCES.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+         if(cual==Detalles.SNICKER && depSnickers.getSize() > 0  ){
+                 if(m.getValor() <  Detalles.DULCES.getDetalle()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
              calcularVueltoDulce(m);
              return depSnickers.getElemento();
         }
-         if(cual== SUPER8 && depSuper8.getSize()> 0 ){
-             if(m.getValor() <  Precios.DULCES.getPrecio()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
+         if(cual==Detalles.SUPER8 && depSuper8.getSize()> 0 ){
+             if(m.getValor() <  Detalles.DULCES.getDetalle()) throw new PagoInsuficienteException("No hay Productos en el Deposito");
              calcularVueltoDulce(m);
              return depSuper8.getElemento();
         }
@@ -68,13 +63,13 @@ public class Expendedor {
         return monVu.getElemento();
     }
     private void calcularVueltoBebida(Moneda m) {
-        for (int i = 0; i < m.getValor() - Precios.BEBIDAS.getPrecio(); i += 100) {
+        for (int i = 0; i < m.getValor() - Detalles.BEBIDAS.getDetalle(); i += 100) {
             Moneda a = new Moneda100();
             monVu.addElemento(a);
         }
     }
     private void calcularVueltoDulce(Moneda m){
-                for(int i=0;i<m.getValor() - Precios.DULCES.getPrecio();i+=100){
+                for(int i=0;i<m.getValor() - Detalles.DULCES.getDetalle();i+=100){
                     Moneda a = new Moneda100();
                     monVu.addElemento(a);
         }

@@ -4,18 +4,23 @@ package org.example;
  *
  * @version 1.0
  */
-public enum Precios{
+public enum Detalles{
+    COCA(1),
+    SPRITE(2),
+    FANTA(3),
+    SNICKER(4),
+    SUPER8(5),
     BEBIDAS(800),
     DULCES(500);
-    private int precio;
+    private int det;
     /**
      * Constructor de la enumeracion.
      * Asigna los valores.
      *
-     * @param precio El valor de precio asociado a la constante enum.
+     * @param det El valor de precio asociado a la constante enum.
      */
-    Precios(int precio) {
-        this.precio = precio;
+    Detalles(int det) {
+        this.det = det;
     }
     /**
      * Permite obener el valor numerico.
@@ -23,8 +28,8 @@ public enum Precios{
      * @return retorna la constante solicitada.
      */
 
-    public int getPrecio(){
-        return precio;
+    public int getDetalle(){
+        return det;
     }
 }
 

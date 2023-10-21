@@ -11,11 +11,11 @@ public class Main {
         // Crear un expendedor (1 para luego ver las excepciones)
         Expendedor vendomatica = new Expendedor(3);
 
-        Comprador clienteA = new Comprador(m1000, 1, vendomatica);
-        Comprador clienteB = new Comprador(m1000, 2, vendomatica);
-        Comprador clienteC = new Comprador(m1000, 3, vendomatica);
-        Comprador clienteD = new Comprador(m1500, 4, vendomatica);
-        Comprador clienteE = new Comprador(m1500, 5, vendomatica);
+        Comprador clienteA = new Comprador(m1000, Detalles.COCA, vendomatica);
+        Comprador clienteB = new Comprador(m1000, Detalles.SPRITE, vendomatica);
+        Comprador clienteC = new Comprador(m1000, Detalles.FANTA, vendomatica);
+        Comprador clienteD = new Comprador(m1500, Detalles.SNICKER, vendomatica);
+        Comprador clienteE = new Comprador(m1500, Detalles.SUPER8, vendomatica);
 
         System.out.println("Consumiste: "+clienteA.queConsumiste()+". Vuelto: "+clienteB.cuantoVuelto());
         System.out.println("Consumiste: "+clienteB.queConsumiste()+". Vuelto: "+clienteB.cuantoVuelto());
@@ -26,20 +26,20 @@ public class Main {
         // Excepciones
         try {
             Expendedor vendomaticaNula = new Expendedor(0);
-            Comprador clienteF = new Comprador(m1500, 1, vendomaticaNula);
+            Comprador clienteF = new Comprador(m1500, Detalles.COCA, vendomaticaNula);
             System.out.println("Consumiste: "+clienteF.queConsumiste()+". Vuelto: "+clienteA.cuantoVuelto());
         }
         catch(NoHayProductoException e){
             System.out.println("Exception: " + e.getMessage() + " , Dinero Retornado:" + m1500.getValor());
         }
         try {
-            Comprador clienteG = new Comprador(m100, 1, vendomatica);
+            Comprador clienteG = new Comprador(m100, Detalles.COCA, vendomatica);
             System.out.println("Consumiste: "+clienteG.queConsumiste()+". Vuelto: "+clienteA.cuantoVuelto());
         } catch(PagoInsuficienteException e){
             System.out.println("Excepcion: " + e.getMessage() + " , Dinero Retornado:" + m100.getValor());
         }
         try {
-            Comprador clienteH = new Comprador(null, 1, vendomatica);
+            Comprador clienteH = new Comprador(null, Detalles.COCA, vendomatica);
             System.out.println("Consumiste: "+clienteH.queConsumiste()+". Vuelto: "+clienteA.cuantoVuelto());
         } catch(PagoIncorrectoException e){
             System.out.println("Excepcion: " + e.getMessage() + " , Dinero Retornado:" + null);
