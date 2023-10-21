@@ -4,4 +4,4 @@ Repositorio para la tarea 2 de la asignatura.
 - Martin Alonso Lara Castro
 - Benjamín Cristobal Villarroel Rubio
 ## Diagrama de clases
-![Diagrama UML](UML_tarea2.png)
+![Diagrama UML](UMLfinal_tarea2.png)

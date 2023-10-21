@@ -1,25 +1,49 @@
 package org.example;
 
+/**
+ * La clase Comprador permite realizar las transacciones recibiendo los valores a trabajar y conteniendo los resultados.
+ */
 public class Comprador {
     private String consumiste;
-
-
     private int vuelto;
-    // Arreglar
-    public Comprador(Moneda m,Detalles cualProducto, Expendedor exp){
-        Producto p = exp.comprarProducto(m,cualProducto);
+
+    /**
+     * Constructor de la clase Comprador.
+     *
+     * @param m             La moneda para realizar la compra.
+     * @param cualProducto  El Producto a comprar.
+     * @param exp           El expendedor en el que se realizara la compra.
+     */
+    public Comprador(Moneda m, Detalles cualProducto, Expendedor exp) {
+        Producto p = exp.comprarProducto(m, cualProducto);
         int temp = 0;
-        if(cualProducto == Detalles.COCA || cualProducto == Detalles.SPRITE || cualProducto == Detalles.FANTA || cualProducto == Detalles.SNICKER || cualProducto == Detalles.SUPER8){
-            // Al final los casos se resumen a verificar si hay productos en el depósito, y si la moneda no es nula, pero de igual forma hay que testearlo
-            while(exp.getVuelto() != null) temp += 100;
+
+        if (cualProducto == Detalles.COCA || cualProducto == Detalles.SPRITE || cualProducto == Detalles.FANTA ||
+                cualProducto == Detalles.SNICKER || cualProducto == Detalles.SUPER8) {
+            // El ciclo verifica si hay vuelto en el expendedor.
+            while (exp.getVuelto() != null) {
+                temp += 100;
+            }
             consumiste = p.consumir();
             vuelto = temp;
         }
     }
-    public int cuantoVuelto(){
+
+    /**
+     * Getter del Vuelto.
+     *
+     * @return La cantidad de vuelto.
+     */
+    public int cuantoVuelto() {
         return vuelto;
     }
-    public String queConsumiste(){
+
+    /**
+     * Getter del producto consumido.
+     *
+     * @return el producto consumido.
+     */
+    public String queConsumiste() {
         return consumiste;
     }
 }

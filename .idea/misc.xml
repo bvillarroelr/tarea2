@@ -1,7 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JavadocGenerationManager">
+<<<<<<< HEAD
     <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/docs" />
+=======
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/Docs" />
+>>>>>>> 87078b998bfb73b5521878967a189253c8906ff0
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
