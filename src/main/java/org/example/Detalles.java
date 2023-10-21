@@ -1,10 +1,9 @@
 package org.example;
+
 /**
- * La enumeración "Precios" contiene los precios de los distintos tipos y sabores de productoss.
- *
- * @version 1.0
+ * La enumeración Detalles contiene las ctes. usadas para elegir productos y acceder a precios
  */
-public enum Detalles{
+public enum Detalles {
     COCA(1),
     SPRITE(2),
     FANTA(3),
@@ -12,25 +11,24 @@ public enum Detalles{
     SUPER8(5),
     BEBIDAS(800),
     DULCES(500);
+
     private int det;
+
     /**
-     * Constructor de la enumeracion.
-     * Asigna los valores.
+     * Constructor de la enumeración Detalles.
      *
-     * @param det El valor de precio asociado a la constante enum.
+     * @param det Enumeracion de Enteros.
      */
     Detalles(int det) {
         this.det = det;
     }
-    /**
-     * Permite obener el valor numerico.
-     *
-     * @return retorna la constante solicitada.
-     */
 
-    public int getDetalle(){
+    /**
+     * getter de cualquier parametro del enum.
+     *
+     * @return valor numerico del detalle solicitado.
+     */
+    public int getDetalle() {
         return det;
     }
 }
-
-
