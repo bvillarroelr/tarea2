@@ -1,4 +1,7 @@
 package org.example;
+/**
+ * Metodo Main para probar expendedores y compradores
+ */
 public class Main {
     public static void main(String[] args) {
 
@@ -11,12 +14,14 @@ public class Main {
         // Crear un expendedor (1 para luego ver las excepciones)
         Expendedor vendomatica = new Expendedor(3);
 
+        //Crea compradores
         Comprador clienteA = new Comprador(m1000, Detalles.COCA, vendomatica);
         Comprador clienteB = new Comprador(m1000, Detalles.SPRITE, vendomatica);
         Comprador clienteC = new Comprador(m1000, Detalles.FANTA, vendomatica);
         Comprador clienteD = new Comprador(m1500, Detalles.SNICKER, vendomatica);
         Comprador clienteE = new Comprador(m1500, Detalles.SUPER8, vendomatica);
 
+        //Escribe Resultados
         System.out.println("Consumiste: "+clienteA.queConsumiste()+". Vuelto: "+clienteB.cuantoVuelto());
         System.out.println("Consumiste: "+clienteB.queConsumiste()+". Vuelto: "+clienteB.cuantoVuelto());
         System.out.println("Consumiste: "+clienteC.queConsumiste()+". Vuelto: "+clienteC.cuantoVuelto());
