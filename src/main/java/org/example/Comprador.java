@@ -2,6 +2,8 @@ package org.example;
 
 public class Comprador {
     private String consumiste;
+
+    
     private int vuelto;
     // Arreglar
     public Comprador(Moneda m, int cualProducto, Expendedor exp){
