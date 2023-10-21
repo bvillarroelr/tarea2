@@ -1,2 +1,7 @@
-# tarea2
-Tarea 2 progra II
+# Tarea 2 Programación II
+
+## Integrantes
+- Martin Alonso Lara Castro
+- Benjamín Cristobal Villarroel Rubio
+
+![Diagrama UML](UML_tarea2.png)
